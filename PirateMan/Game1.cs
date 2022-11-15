@@ -23,6 +23,7 @@ namespace PirateMan
         int lives = 3;
         List<Orange> orangeList;
         List<Enemy> enemyList;
+        List<SuperOrange> superOrangesList;
         public Rectangle screenSize;
         Texture2D backgroundTexture;
         Texture2D winTexture;
@@ -82,6 +83,7 @@ namespace PirateMan
             MediaPlayer.IsRepeating = true;
             List<string> strings = new List<string>();
             enemyList = new List<Enemy>();
+            superOrangesList = new List<SuperOrange>();
             
 
 
@@ -123,6 +125,15 @@ namespace PirateMan
 
                      
                     }
+                    else if (strings[j][i] == 'F')
+                    {
+                        tiles[i, j] = new Tile(new Vector2(crateTexture.Width * i, crateTexture.Height * j), crateTexture, false);
+                        
+                        superOrangesList.Add(new SuperOrange(new Vector2(waterTexture.Width * i, waterTexture.Width * j), orangeTexture));
+
+
+                    }
+
 
                     oranges = orangeList.Count;
                 }
@@ -191,6 +202,8 @@ namespace PirateMan
                         enemyList.Remove(enemy);
                         lives--;
                         deathSound.Play();
+
+                        
                         
 
 
@@ -206,10 +219,7 @@ namespace PirateMan
 
                     
                 }
-                //if(lives == 0)
-                //{
-                //    currenGameState = GameState.GameOver;
-                //}
+              
                 foreach (Orange ornage in orangeList)
                 {
                     
@@ -225,7 +235,24 @@ namespace PirateMan
                         break;
                     }
 
+                    
                 }
+
+                foreach (SuperOrange superOrange in superOrangesList)
+                {
+
+                    if (pacman.hitBox.Intersects(superOrange.hitBox))
+                    {
+                        superOrangesList.Remove(superOrange);
+                        lives++;
+
+                        break;
+                    }
+
+
+
+                }
+
 
             }
 
@@ -235,10 +262,9 @@ namespace PirateMan
 
 
 
-            
 
 
-            base.Update(gameTime);
+                base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -272,7 +298,10 @@ namespace PirateMan
                 {
                     orange.Draw(_spriteBatch);
                 }
-
+                foreach(SuperOrange superOrange in superOrangesList)
+                {
+                    superOrange.Draw(_spriteBatch);
+                }
                 foreach (Enemy enemy in enemyList)
                 {
                     enemy.Draw(_spriteBatch);

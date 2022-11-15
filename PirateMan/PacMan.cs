@@ -17,23 +17,12 @@ namespace PirateMan
         float speed = 100.0f;
         public Rectangle hitBox;
         public Vector2 startPos;
-        
-
-
-
-
-
-
-
-
-        public Rectangle[] walkRects = new Rectangle[6];
-
-
-
+        Rectangle[] walkRects = new Rectangle[6];
         AnimationClip walkClip;
         AnimationClip currentClip;
-
-
+        SpriteEffect SpriteEffect;
+        
+        
         public PacMan(Vector2 drawPos, Texture2D texture) : base(drawPos, texture)
         {
             hitBox = new Rectangle((int)drawPos.X-16, (int)drawPos.Y, 16, 16);
@@ -48,17 +37,11 @@ namespace PirateMan
                 new Rectangle(40+2,30*5+1,40,29),
             };
             
-           
             walkClip = new AnimationClip(walkRects, 7.5f);
-
             currentClip = walkClip;
             startPos=drawPos;
-
         }
-
-        
-
-
+           
 
         public void ChangeDirection(Vector2 dir)
         {
@@ -71,13 +54,13 @@ namespace PirateMan
                 destination = newDestination;
                 moving = true;
             }
-
-
-
-
-
-
         }
+
+
+
+
+
+
 
 
 
@@ -126,16 +109,16 @@ namespace PirateMan
                     moving = false;
                 }
             }
-           
-            
-            
-            
 
             hitBox.Y = (int)drawPos.Y;
             hitBox.X = (int)drawPos.X;
 
-
         }
+           
+            
+
+
+
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle destRect = new Rectangle(hitBox.X,hitBox.Y, 40, 29);
@@ -158,9 +141,25 @@ namespace PirateMan
                 spriteBatch.Draw(texture, destRect, currentClip.GetCurrentSourceRectangle(), Color.White);
 
             }
-            //spriteBatch.Draw(texture, new Vector2(1, 1), sourceRectangle, Color.White);
+            
 
 
         }
     }
 }
+            
+            
+
+        
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ namespace PirateMan
         AnimationClip walkClip;
         AnimationClip currentClip;
         Vector2 startPos;
-        PacMan pacman;
+        
         int tileSize = 32;
         double timer;
         int randomNr;
