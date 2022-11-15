@@ -60,8 +60,8 @@ namespace PirateMan
             walkClip = new AnimationClip(walkRects, 7.5f);
             currentEnemyState= EnemyState.walkingRight;
             currentClip = walkClip;
-            speed = rnd.Next(1,3);
-            randomNr = rnd.Next(1, 500);
+            speed = rnd.Next();
+            randomNr = rnd.Next();
             timer = 0;
             
         }
@@ -71,7 +71,7 @@ namespace PirateMan
             hitBox.Y = (int)drawPos.Y;
             hitBox.X = (int)drawPos.X;
             speed = rnd.Next(1,3);
-            randomNr = rnd.Next(1, 100);
+            randomNr = rnd.Next(1, 200);
             timer = gameTime.ElapsedGameTime.TotalSeconds;
            
             switch (currentEnemyState)

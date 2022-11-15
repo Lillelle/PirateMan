@@ -11,7 +11,7 @@ namespace PirateMan
 {
     internal class PacMan : GameObject
     {
-        int health;
+        
         Vector2 direction, destination;
         bool moving;
         float speed = 100.0f;
@@ -20,7 +20,7 @@ namespace PirateMan
         Rectangle[] walkRects = new Rectangle[6];
         AnimationClip walkClip;
         AnimationClip currentClip;
-        SpriteEffect SpriteEffect;
+        
         
         
         public PacMan(Vector2 drawPos, Texture2D texture) : base(drawPos, texture)
