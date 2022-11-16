@@ -20,13 +20,14 @@ namespace PirateMan
         Rectangle[] walkRects = new Rectangle[6];
         AnimationClip walkClip;
         AnimationClip currentClip;
+        public Rectangle dmgHitBox;
         
         
         
         public PacMan(Vector2 drawPos, Texture2D texture) : base(drawPos, texture)
         {
-            hitBox = new Rectangle((int)drawPos.X-16, (int)drawPos.Y, 16, 16);
-
+            hitBox = new Rectangle((int)drawPos.X, (int)drawPos.Y, 16, 16);
+            dmgHitBox= new Rectangle((int) drawPos.X, (int)drawPos.Y, 16, 16);
             walkRects = new Rectangle[]
             {
                 new Rectangle(40+2,30*0+1,40,29),
@@ -111,7 +112,17 @@ namespace PirateMan
             }
 
             hitBox.Y = (int)drawPos.Y;
-            hitBox.X = (int)drawPos.X;
+            hitBox.X = (int)drawPos.X+3;
+
+            dmgHitBox.X=(int)(drawPos.X)+9;
+            dmgHitBox.Y=(int)(drawPos.Y)+6;
+
+            if(Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                dmgHitBox.X = (int)(drawPos.X) + 16;
+                dmgHitBox.Y = (int)(drawPos.Y) + 6;
+
+            }
 
         }
            

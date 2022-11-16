@@ -18,6 +18,7 @@ namespace PirateMan
         
 
         public Rectangle hitBox;
+        public Rectangle dmgHitBox;
         AnimationClip walkClip;
         AnimationClip currentClip;
         Vector2 startPos;
@@ -40,6 +41,7 @@ namespace PirateMan
         public Enemy(Vector2 drawPos, Texture2D texture) : base(drawPos, texture)
         {
             hitBox = new Rectangle((int)drawPos.X, (int)drawPos.Y, 32,32);
+            dmgHitBox = new Rectangle((int)drawPos.X, (int)drawPos.Y, 20, 20);
             startPos = new Vector2(drawPos.X, drawPos.Y);
             walkRects = new Rectangle[]
             {
@@ -70,6 +72,8 @@ namespace PirateMan
         {
             hitBox.Y = (int)drawPos.Y;
             hitBox.X = (int)drawPos.X;
+            dmgHitBox.X = (int)drawPos.X+6;
+            dmgHitBox.Y = (int)drawPos.Y+8;
             speed = rnd.Next(1,3);
             randomNr = rnd.Next(1, 200);
             timer = gameTime.ElapsedGameTime.TotalSeconds;

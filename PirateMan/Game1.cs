@@ -16,7 +16,7 @@ namespace PirateMan
         private SpriteBatch _spriteBatch;
         static Tile[,] tiles;
         int tileSize;
-        
+        Texture2D hitBoxTexture;
         PacMan pacman;
         
         int oranges;
@@ -65,6 +65,7 @@ namespace PirateMan
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             currenGameState = GameState.Start;
+            hitBoxTexture = Content.Load<Texture2D>("water");
             Texture2D crateTexture = Content.Load<Texture2D>("crate");
             Texture2D waterTexture = Content.Load<Texture2D>("Water");
             Texture2D playerTexture = Content.Load<Texture2D>("classic-pegleg");
@@ -196,7 +197,7 @@ namespace PirateMan
                 
                 foreach(Enemy enemy in enemyList)
                 {
-                    if (enemy.hitBox.Intersects(pacman.hitBox))
+                    if (enemy.dmgHitBox.Intersects(pacman.dmgHitBox))
                     {
 
                         enemyList.Remove(enemy);
@@ -225,7 +226,7 @@ namespace PirateMan
                     
 
                     
-                    if (pacman.hitBox.Intersects(ornage.hitBox))
+                    if (pacman.dmgHitBox.Intersects(ornage.hitBox))
                     {
 
                         orangeList.Remove(ornage);
@@ -245,7 +246,7 @@ namespace PirateMan
                     {
                         superOrangesList.Remove(superOrange);
                         lives++;
-
+                        
                         break;
                     }
 
@@ -259,7 +260,7 @@ namespace PirateMan
 
 
 
-
+            
 
 
 
@@ -304,14 +305,16 @@ namespace PirateMan
                 }
                 foreach (Enemy enemy in enemyList)
                 {
+                    
                     enemy.Draw(_spriteBatch);
                 }
 
                 _spriteBatch.DrawString(scorefont,"Oranges Left: "+oranges.ToString(),Vector2.Zero, Color.DarkOrange);
                 _spriteBatch.DrawString(scorefont,"Lives: "+lives.ToString(),new Vector2(0,50), Color.DarkOrange);
                 pacman.Draw(_spriteBatch);
-                
 
+                
+                
             }
 
             if (currenGameState == GameState.GameOver)
@@ -323,6 +326,8 @@ namespace PirateMan
                 _spriteBatch.Draw(winTexture, Vector2.Zero, Color.White);
             }
 
+
+            
 
             _spriteBatch.End();
             base.Draw(gameTime);
