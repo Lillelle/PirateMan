@@ -23,7 +23,7 @@ namespace PirateMan
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, drawPos, Color.LightBlue);
         }

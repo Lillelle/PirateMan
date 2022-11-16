@@ -126,7 +126,7 @@ namespace PirateMan
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             Rectangle destRect = new Rectangle(hitBox.X, hitBox.Y, 32, 32);
 

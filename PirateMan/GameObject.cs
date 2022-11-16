@@ -19,7 +19,7 @@ namespace PirateMan
             this.texture = texture;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, drawPos, Color.White);
         }
