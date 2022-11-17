@@ -22,11 +22,6 @@ namespace PirateMan
 
 
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, drawPos, Color.White);
-            //spriteBatch.Draw(texture, hitBox, Color.Red);
-
-        }
+        
     }
 }
