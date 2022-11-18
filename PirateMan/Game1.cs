@@ -114,18 +114,23 @@ namespace PirateMan
                     {
                         currenGameState = GameState.Win;
                         
+                        
                     }
                     break;
                 case GameState.GameOver:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
                     {
-                        Exit();
+                        lives = 3;
+                        LoadContent();
+                        currenGameState = GameState.Start;
                     }
                         break;
                      case GameState.Win:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
                     {
-                        Exit();
+                        lives = 3;
+                        LoadContent();
+                        currenGameState = GameState.Start;
                     }
 
                         break;
